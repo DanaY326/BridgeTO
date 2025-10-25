@@ -5,12 +5,44 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
 import { mockPrayerRequests, categories, churchTypes, locations } from "@/data/mockData";
+import { useUser } from "@/contexts/UserContext";
+import { UserRole } from "@/types/UserTypes";
+import { AlertCircle } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const PrayerRequests = () => {
+  const { user, role } = useUser();
+
+  if (role !== UserRole.INDIVIDUAL) {
+    return (
+      <div className="min-h-screen bg-gradient-to-b from-background to-muted/30">
+        <Navbar />
+        <div className="container mx-auto px-4 py-24">
+          <div className="max-w-md mx-auto text-center space-y-6 p-8 bg-card rounded-lg shadow-sm border">
+            <AlertCircle className="h-12 w-12 text-destructive mx-auto" />
+            <h2 className="text-2xl font-bold">Access Restricted</h2>
+            <p className="text-muted-foreground">
+              This page is only accessible to individual users. Please log in with an individual account to view prayer requests.
+            </p>
+            <div className="flex gap-4 justify-center">
+              <Button variant="default" onClick={() => window.location.href = '/login'}>
+                Log In
+              </Button>
+              <Button variant="outline" onClick={() => window.location.href = '/signup'}>
+                Sign Up
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All Categories");
   const [selectedLocation, setSelectedLocation] = useState("All Locations");
   const [selectedChurchType, setSelectedChurchType] = useState("All Denominations");
+  const [prayerCount, setPrayerCount] = useState<Record<string, number>>({});
 
   const filteredRequests = mockPrayerRequests.filter(request => {
     const matchesSearch = request.title.toLowerCase().includes(searchQuery.toLowerCase()) ||

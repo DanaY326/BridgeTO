@@ -4,8 +4,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Heart, Church, MessageCircle, Globe } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import heroImage from "@/assets/hero-prayer.jpg";
+import { useUser } from "@/contexts/UserContext";
+import { UserRole } from "@/types/UserTypes";
 
 const Index = () => {
+  const { role } = useUser();
   return (
     <div className="min-h-screen">
       <Navbar />
@@ -26,18 +29,22 @@ const Index = () => {
             Share your prayer requests and receive support from churches in your community
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
-            <Link to="/submit">
-              <Button size="lg" className="gap-2 shadow-lg">
-                <Heart className="h-5 w-5" />
-                Submit Prayer Request
-              </Button>
-            </Link>
-            <Link to="/requests">
-              <Button size="lg" variant="outline" className="gap-2">
-                <Church className="h-5 w-5" />
-                View All Requests
-              </Button>
-            </Link>
+            {role === UserRole.CHURCH && (
+              <Link to="/submit">
+                <Button size="lg" className="gap-2 shadow-lg">
+                  <Heart className="h-5 w-5" />
+                  Submit Prayer Request
+                </Button>
+              </Link>
+            )}
+            {role === UserRole.INDIVIDUAL && (
+              <Link to="/requests">
+                <Button size="lg" variant="outline" className="gap-2">
+                  <Church className="h-5 w-5" />
+                  View All Requests
+                </Button>
+              </Link>
+            )}
           </div>
         </div>
       </section>

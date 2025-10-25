@@ -1,8 +1,11 @@
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Heart } from "lucide-react";
+import { useUser } from "@/contexts/UserContext";
+import { UserRole } from "@/types/UserTypes";
 
 const Navbar = () => {
+  const { role } = useUser();
   const location = useLocation();
   
   const isActive = (path: string) => location.pathname === path;
@@ -26,22 +29,56 @@ const Navbar = () => {
               Home
             </Button>
           </Link>
-          <Link to="/requests">
-            <Button 
-              variant={isActive("/requests") ? "default" : "ghost"}
-              className="transition-all"
-            >
-              Prayer Requests
-            </Button>
-          </Link>
-          <Link to="/submit">
-            <Button 
-              variant={isActive("/submit") ? "secondary" : "outline"}
-              className="transition-all"
-            >
-              Submit Request
-            </Button>
-          </Link>
+          {role === UserRole.CHURCH && (
+            <Link to="/submit">
+              <Button 
+                variant={isActive("/submit") ? "secondary" : "outline"}
+                className="transition-all"
+              >
+                Submit Request
+              </Button>
+            </Link>
+          )}
+          {role === UserRole.INDIVIDUAL && (
+            <Link to="/requests">
+              <Button 
+                variant={isActive("/requests") ? "default" : "ghost"}
+                className="transition-all"
+              >
+                Prayer Requests
+              </Button>
+            </Link>
+          )}
+          {role === UserRole.NOT_LOGGED_IN && (
+            <Link to="/login">
+              <Button 
+                variant={isActive("/submit") ? "secondary" : "outline"}
+                className="transition-all"
+              >
+                Log in
+              </Button>
+            </Link>
+          )}
+          {role === UserRole.NOT_LOGGED_IN && (
+            <Link to="/Signup">
+              <Button 
+                variant={isActive("/submit") ? "secondary" : "outline"}
+                className="transition-all"
+              >
+                Sign up
+              </Button>
+            </Link>
+          )}
+          {role !== UserRole.NOT_LOGGED_IN && (
+            <Link to="/logout">
+              <Button 
+                variant={isActive("/submit") ? "secondary" : "outline"}
+                className="transition-all"
+              >
+                Logout
+              </Button>
+            </Link>
+          )}
         </div>
       </div>
     </nav>
