@@ -39,16 +39,16 @@ const Navbar = () => {
               </Button>
             </Link>
           )}
-          {role === UserRole.INDIVIDUAL && (
+          {/* {role === UserRole.INDIVIDUAL && ( */}
             <Link to="/requests">
               <Button 
-                variant={isActive("/requests") ? "default" : "ghost"}
+                variant={isActive("/requests") ? "secondary" : "outline"}
                 className="transition-all"
               >
                 Prayer Requests
               </Button>
             </Link>
-          )}
+          {/* )} */}
           {role === UserRole.NOT_LOGGED_IN && (
             <Link to="/login">
               <Button 
