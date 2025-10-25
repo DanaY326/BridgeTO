@@ -7,7 +7,7 @@ import heroImage from "@/assets/hero-prayer.jpg";
 import { useUser } from "@/contexts/UserContext";
 import { UserRole } from "@/types/UserTypes";
 import { PrayerRequestDashboard } from "@/components/PrayerRequestDashboard";
-import { Quote } from "lucide-react"; 
+import { Eye } from "lucide-react"; 
 import { useState, useEffect } from "react";
 import { set } from "date-fns";
 
@@ -21,18 +21,20 @@ const Index = () => {
   useEffect(() => {
     const fetchUpgData = async () => {
       try {
-        const response = await fetch(`https://api.joshuaproject.net/v1/people_groups/daily_unreached.json?api_key=${import.meta.env.VITE_JOSHUA_API_KEY}`);
+        setUpgBlurb("Loading...");
+        const response = await fetch(`https://api.joshuaproject.net/v1/people_groups.json?api_key=${import.meta.env.VITE_JOSHUA_API_KEY}&countries=CA&include_profile_text=Y&least_reached=Y&include_resources=Y&limit=250&page=1`);
         const data = await response.json();
-        setUpgInfo(data.toString());
-        if (data && data.length > 0 && typeof(data[0]) === 'object') {
-          setUpgInfo(`${data[0]["PeopNameInCountry"] || ""} - ${data[0]["RegionName"] || ""} - ${data[0]["PrimaryLanguageName"] + " speakers" || ""}`);
-          setUpgBlurb(data[0]["Summary"] || "");
-          setUpgImgUrl(data[0]["PeopleGroupPhotoURL"] || "");
-          setUpgMapUrl(data[0]["PeopleGroupMapExpandedURL"] || "");
+        const torontoData = data.filter((group: any) => group["LocationInCountry"] && group["LocationInCountry"].toLowerCase().includes("toronto"));
+        const randData = torontoData[Math.floor(Math.random()*torontoData.length)];
+        if (randData && typeof(randData) === 'object') {
+          setUpgInfo(`${randData["PeopNameInCountry"] || ""} - ${randData["LocationInCountry"].split(",").map(location => location.trim()).filter(location => location.toLowerCase().includes("toronto")) || ""} - ${randData["PrimaryLanguageName"] + " speakers" || ""}`);
+          setUpgBlurb(randData["Summary"] || "");
+          setUpgImgUrl(randData["PeopleGroupPhotoURL"] || "");
+          setUpgMapUrl(randData["PeopleGroupMapExpandedURL"] || "");
         }
       } catch (error) {
         console.error("Error fetching data from Joshua Project API:", error);
-        setUpgInfo(error.toString());
+        setUpgBlurb("");
       }
     };
     fetchUpgData();
@@ -84,7 +86,7 @@ const Index = () => {
       <Card className="bg-gradient-to-br from-muted/50 to-background border border-accent/20">
         <CardHeader className="text-center space-y-4">
           <div className="mx-auto mb-4 w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center">
-            <Quote className="h-6 w-6 text-accent" />
+            <Eye className="h-6 w-6 text-accent" />
           </div>
           <CardTitle className="text-2xl font-serif">Spotlight on Least Reached Peoples</CardTitle>
           <blockquote className="text-xl italic text-foreground/80 max-w-2xl mx-auto py-4">
@@ -94,8 +96,8 @@ const Index = () => {
             {upgBlurb || ""}
           </blockquote>
           <div className="flex flex-row gap-10 justify-center flex-wrap pt-4">
-            <img src={upgImgUrl} alt="Unreached People Group" className="max-h-60 object-cover rounded-md" />
-            <img src={upgMapUrl} alt="Unreached People Group" className="max-h-60 object-cover rounded-md" />
+            {upgImgUrl && <img src={upgImgUrl} alt="An unreached people" className="max-h-60 object-cover rounded-md" />}
+            {upgMapUrl && <img src={upgMapUrl} alt="Map" className="max-h-60 object-cover rounded-md" />}
           </div>
         </CardHeader>
       </Card>
