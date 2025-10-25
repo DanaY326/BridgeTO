@@ -111,13 +111,11 @@ export const mockPrayerRequests: PrayerRequest[] = [
 
 export const categories = [
   "All Categories",
-  "Health",
-  "Guidance",
-  "Relationships",
-  "Financial",
-  "Comfort",
-  "Salvation",
-  "Family",
+  "Unreached Peoples",
+  "Persecution & Access Barriers",
+  "Global Mobilization",
+  "Indigenous Believers",
+  "Transformation & Open Doors",
   "Other"
 ];
 
@@ -136,14 +134,14 @@ export const churchTypes = [
 
 export const locations = [
   "All Locations",
-  "Los Angeles, CA",
-  "New York, NY",
-  "Chicago, IL",
-  "Houston, TX",
-  "Miami, FL",
-  "Phoenix, AZ",
-  "Philadelphia, PA",
-  "San Antonio, TX",
-  "San Diego, CA",
-  "Dallas, TX"
+  "Brampton",
+  "Danforth",
+  "East York",
+  "Etobicoke",
+  "Mississauga",
+  "North York",
+  "Scarborough",
+  "Vaughan",
+  "York",
+  "Other"
 ];
