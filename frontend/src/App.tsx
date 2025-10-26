@@ -5,11 +5,12 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { UserProvider } from "./contexts/UserContext";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
-import PrayerRequests from "./pages/PrayerRequests";
-import SubmitRequest from "./pages/SubmitRequest";
-import Login from "./pages/Login";
+import FindEvent from "./pages/FindEvent";
+import CreateEvent from "./pages/CreateEvent";
+import Resources from "./pages/Resources";
 import Logout from "./pages/Logout";
 import NotFound from "./pages/NotFound";
+import Map from "./pages/Map";
 import { User } from "lucide-react";
 
 const queryClient = new QueryClient();
@@ -23,10 +24,10 @@ const App = () => (
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
-            <Route path="/requests" element={<PrayerRequests />} />
-            <Route path="/submit" element={<SubmitRequest />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/logout" element={<Logout />} />
+            <Route path="/create" element={<CreateEvent />} />
+            <Route path="/find" element={<FindEvent />} />
+            <Route path="/resources" element={<Resources />} />
+            <Route path="/map" element={<Map />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
