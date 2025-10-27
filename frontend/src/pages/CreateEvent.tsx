@@ -71,7 +71,7 @@ const CreateEvent = () => {
     });
 
     // Navigate to requests page after submission
-    setTimeout(() => navigate("/resources"), 1500);
+    setTimeout(() => navigate("/find"), 1500);
   };
 
   return (
