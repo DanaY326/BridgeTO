@@ -2,6 +2,11 @@
 
 Winner of the "Most Kingdom Impact" category in the Indigitous #Hack2025 Toronto Hackathon.
 
+
+## Tech
+
+The project is done in Vite using Typescript. It uses Leaflet.js to create the map and the Joshua project API to create a searchable wiki. 
+
 ## Motivation
 
 We wanted to build something to help the least reached people in our community. BridgeTO is a website that allows organizations to host events to reach out to, include and honor those in our community who are usually forgotten. 
@@ -26,10 +31,6 @@ We created a plan. My team would adapt what we could from the old website, speci
 
 It required some late-night coding, but we got a working prototype up and running for the presentation the next day, and our new concept was specifically praised by the judges. I'm proud of our resourcefulness, enthusiasm and resilience. Thank you to my teammates, Abishek, Zion and Chris!
 
-
-## Tech
-
-The project is done in Vite using Typescript. It uses Leaflet.js to create the map and the Joshua project API to create a searchable wiki. 
 
 
 
