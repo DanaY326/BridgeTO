@@ -14,6 +14,10 @@ Another is a wiki, and yet another provides information and inspiration to those
 
 The goal is to use the information and resources that exist, such as the Joshua Project database, and to package it up to faciliate events that genuinely help the people in our community that most need help.
 
+## Tech
+
+The project is done in Vite using Typescript. It uses Leaflet.js to create the map and the Joshua project API to create a searchable wiki. 
+
 ## Challenges
 
 Our original idea was somewhat disjointed and broad, focusing only on spreading messages of positivity throughout the community, but we jumped right into coding and had most of an MVP done. This was the evening before our submissions were due. 
