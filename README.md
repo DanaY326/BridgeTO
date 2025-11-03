@@ -33,7 +33,7 @@ It required some late-night coding, but we got a working prototype up and runnin
 
 #
 
-Shoutout to my wonderful teammates, Abishek Bhuvanaratnam, Zion Park and Chris!
+Shoutout to my wonderful teammates, Abishek Bhuvanaratnam, Zion Park and Chris Ijogbe!
 
 
 
