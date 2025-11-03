@@ -29,7 +29,11 @@ Our team had to create a working MVP for the new demo, adapting the code for qui
 
 We created a plan. My team would adapt what we could from the old website, specifically the intake forms and the postings board. We would integrate the completely separate app we'd been playing with to show maps of the community. Finally, we'd expand and adapt a "fun fact" section on the website to provide search functionality and create a wiki that could provide resources and information to the community. 
 
-It required some late-night coding, but we got a working prototype up and running for the presentation the next day, and our new concept was specifically praised by the judges. I'm proud of our resourcefulness, enthusiasm and resilience. Thank you to my teammates, Abishek, Zion and Chris!
+It required some late-night coding, but we got a working prototype up and running for the presentation the next day, and our new concept was specifically praised by the judges. I'm proud of our resourcefulness, enthusiasm and resilience. 
+
+#
+
+Shoutout to my wonderful teammates, Abishek Bhuvanaratnam, Zion Park and Chris!
 
 
 
