@@ -35,6 +35,8 @@ It required some late-night coding, but we got a working prototype up and runnin
 
 Shoutout to my wonderful teammates, Abishek Bhuvanaratnam, Zion Park and Chris Ijogbe!
 
+[Demo video](https://www.youtube.com/watch?v=bL99iHmmFQ0)
+
 
 
 
