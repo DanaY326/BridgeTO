@@ -1,6 +1,6 @@
 # BridgeTO
 
-Winner of the "Most Kingdom Impact" category in the Indigitous #Hack2025 Toronto Hackathon.
+Winner of the "Most Impactful" category in the Indigitous #Hack2025 Toronto Hackathon.
 
 
 ## Tech
